@@ -1,6 +1,7 @@
 :root{
     --text-color: FFFFFF;
     --gradiante-orange: rgba(255, 143, 113, 1);
+    --gradiante-yellow: rgba(243, 190, 0, 1);
 }
 *{
     box-sizing: border-box;
@@ -14,4 +15,22 @@ body{
 background-color: var(--gradiante-orange);
     /* background-color: rgba(21, 20, 31, 1); */
     width: 375px;
+}
+
+.trendingPreview-movieList{
+    display: flex;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type:x proximity;
+
+}
+.movie-img{
+    background: #C4C4C4;
+    border-radius: 30px;
+}
+
+.movie-container{
+    position: relative;
+    scroll-snap-align: center;
+    width: 70%;
 }
