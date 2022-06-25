@@ -1,0 +1,17 @@
+:root{
+    --text-color: FFFFFF;
+    --gradiante-orange: rgba(255, 143, 113, 1);
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    color: var(--text-color);
+}
+body{
+background-color: var(--gradiante-orange);
+    /* background-color: rgba(21, 20, 31, 1); */
+    width: 375px;
+}
