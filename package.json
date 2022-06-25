@@ -1,0 +1,23 @@
+{
+  "name": "dampmovies",
+  "version": "1.0.0",
+  "description": "Movie App whit Api",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dampDev/dampMovies.git"
+  },
+  "keywords": [
+    "Api",
+    "Js"
+  ],
+  "author": "Daniel Mendez <dmendezp@live.com.mx>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dampDev/dampMovies/issues"
+  },
+  "homepage": "https://github.com/dampDev/dampMovies#readme"
+}
