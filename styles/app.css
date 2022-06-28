@@ -22,15 +22,21 @@ background-color: var(--gradiante-orange);
     overflow-x: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type:x proximity;
+    gap: 15px;
 
 }
-.movie-img{
-    background: #C4C4C4;
-    border-radius: 30px;
-}
+
 
 .movie-container{
     position: relative;
-    scroll-snap-align: center;
-    width: 70%;
+    scroll-snap-align: end ;
+   
+}
+
+.movie-img{
+    background: #C4C4C4;
+    width: 150px;
+    height: 255px;
+    border-radius: 12px;
+    
 }
