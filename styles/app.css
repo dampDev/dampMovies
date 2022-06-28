@@ -1,5 +1,6 @@
 :root{
-    --text-color: FFFFFF;
+    --text-color: white;
+   
     --gradiante-orange: rgba(255, 143, 113, 1);
     --gradiante-yellow: rgba(243, 190, 0, 1);
 }
@@ -12,9 +13,16 @@ html{
     color: var(--text-color);
 }
 body{
-background-color: var(--gradiante-orange);
+background-color: rgba(21, 20, 31, 1);
     /* background-color: rgba(21, 20, 31, 1); */
     width: 375px;
+}
+.subTitle-container{
+    display: flex;
+}
+
+h2{
+    color:var(--gradiante-orange);
 }
 
 .trendingPreview-movieList{
