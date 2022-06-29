@@ -13,7 +13,7 @@ html{
     color: var(--text-color);
 }
 body{
-background-color: rgba(21, 20, 31, 1);
+background-color: rgba(26, 38, 60, 0.76);
     /* background-color: rgba(21, 20, 31, 1); */
     width: 375px;
 }
@@ -38,6 +38,9 @@ h2{
 .movie-container{
     position: relative;
     scroll-snap-align: end ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    
 }
 
@@ -47,4 +50,31 @@ h2{
     height: 255px;
     border-radius: 12px;
     
+}
+
+p{
+    position: absolute;
+    background: rgba(218, 218, 218, 0.3);
+    backdrop-filter: blur(4.81px);
+    top: 10%;
+    left: 75%;
+    
+}
+
+.title-movie{
+    width: 85%;
+    position: absolute;
+    left: 8.8%;
+    right: 76.13%;
+    top: 78.45%;
+    bottom: 2.52%;
+    background: rgba(218, 218, 218, 0.3);
+    backdrop-filter: blur(4.81px);
+    border-radius: 20px;
+    font-size: .7rem;
+    text-align: center;
+}
+
+.ec-ec-star{
+   background-color: aqua;
 }
