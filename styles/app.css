@@ -15,7 +15,17 @@ html{
 body{
 background-color: rgba(26, 38, 60, 0.76);
     /* background-color: rgba(21, 20, 31, 1); */
+    
+}
+
+.comming-container{
     width: 375px;
+}
+
+.img-comming{
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
 }
 .subTitle-container{
     display: flex;

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/dampDev/dampMovies/issues"
   },
-  "homepage": "https://github.com/dampDev/dampMovies#readme"
+  "homepage": "https://github.com/dampDev/dampMovies#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
 }

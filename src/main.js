@@ -1,4 +1,5 @@
 import {API_KEY} from "./secrets.js"
+
 async function getTrandingMoviesPreview(){
     const res = await fetch ('https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY +'&language=es');
     
