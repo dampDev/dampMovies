@@ -1,9 +1,19 @@
-import {API_KEY} from "./secrets.js"
+import {API_KEY} from "./secrets.js";
+
+const api = axios.create({
+baseURL: 'https://api.themoviedb.org/3/',
+headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+},
+params: {
+    'api_key': API_KEY,
+}
+});
 
 async function getTrandingMoviesPreview(){
-    const res = await fetch ('https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY +'&language=es');
+    const { data } = await api('trending/movie/day');
     
-    const data = await res.json();
+    
         
     const movies = data.results;
     console.log({data, movies});
@@ -15,7 +25,7 @@ async function getTrandingMoviesPreview(){
 
 
         const movieImg = document.createElement('img');
-        const h3title = document.createElement('h3');
+        // const h3title = document.createElement('h3');
         const voto_averege = document.createElement('p');
        
 
@@ -23,9 +33,9 @@ async function getTrandingMoviesPreview(){
         movieImg.setAttribute('alt', movie.title)
         movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
 
-        h3title.classList.add('title-movie');
-        // h3title.setAttribute(movie.title);
-        const h3titleText = document.createTextNode(movie.title);
+        // h3title.classList.add('title-movie');
+        // // h3title.setAttribute(movie.title);
+        // const h3titleText = document.createTextNode(movie.title);
 
         voto_averege.classList.add('vote-average-movie');
 
@@ -37,14 +47,14 @@ async function getTrandingMoviesPreview(){
 
         
         movieContainer.appendChild(movieImg);
-        movieContainer.appendChild(h3title)
+        // movieContainer.appendChild(h3title)
         movieContainer.appendChild(voto_averege);
 
 
        
 
       
-        h3title.appendChild(h3titleText);
+        // h3title.appendChild(h3titleText);
         voto_averege.appendChild(voto_averegeText);
 
         trendingPreviewContainer.appendChild(movieContainer);
@@ -56,9 +66,9 @@ async function getTrandingMoviesPreview(){
 }
 
 async function getCategoriesPreview(){
-    const res = await fetch ('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY +'&language=es');
+    const { data } = await api('genre/movie/list');
     
-    const data = await res.json();
+    // const data = await res.json();
         
     const categories = data.genres;
     
