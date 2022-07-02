@@ -1,5 +1,6 @@
 import {API_KEY} from "./secrets.js";
 
+
 const api = axios.create({
 baseURL: 'https://api.themoviedb.org/3/',
 headers: {
@@ -101,5 +102,8 @@ async function getCategoriesPreview(){
    
 
 }
-getCategoriesPreview();
-getTrandingMoviesPreview();
+
+// getCategoriesPreview();
+// getTrandingMoviesPreview();
+
+export{getTrandingMoviesPreview, getCategoriesPreview};
