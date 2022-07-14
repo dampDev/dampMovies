@@ -17,6 +17,9 @@ background-color: rgba(26, 38, 60, 0.76);
     /* background-color: rgba(21, 20, 31, 1); */
     min-width: 320px;
 }
+h1 {
+    text-align: center;
+}
 
 .comming-container{
     width: 100%;
