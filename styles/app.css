@@ -11,6 +11,7 @@
 }
 html{
     color: var(--text-color);
+    font-family: 'Fredoka One', cursive;
 }
 body{
 background-color: rgba(26, 38, 60, 0.76);
@@ -20,7 +21,32 @@ background-color: rgba(26, 38, 60, 0.76);
 h1 {
     text-align: center;
 }
+.searchForm{
+    width: 100%;
+    height: 48px;
+    margin: 0 auto;
+}
 
+.searchForm-container{
+    width: 95%;
+    margin: 0 auto;
+    background-color: rgba(33, 31, 48, 1);
+    border-radius: 15px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+
+.searchForm-container input{
+    width: 85%;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--text-color)
+
+}
 .comming-container{
     width: 100%;
     min-width: 325px;
@@ -43,7 +69,7 @@ h1 {
 .comming-img-container img{
     width: 100%;
     padding: 10px;
-    border-radius: 23px
+    border-radius: 30px
 
 }
 .trendingPreview-container{
@@ -86,7 +112,7 @@ h2{
     background: #C4C4C4;
     width: 150px;
     height: 255px;
-    border-radius: 12px;
+    border-radius: 20px;
     
 }
 
