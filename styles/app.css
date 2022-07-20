@@ -172,3 +172,7 @@ p{
 .category-title{
     padding: 5px;
 }
+
+.inactive {
+    display: none;
+}

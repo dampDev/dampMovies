@@ -13,9 +13,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>dampmovies</h1>
+    <header id="header" class="header-container">
+        <span class="header-arrow inactive"><i class="fa-solid fa-arrow-left"></i></span>
+        <h1 class="header-title">dampmovies</h1>
+        <h1 class="header-title header-title--categoryView inactive" >Action</h1>
+        
 
-    <section class="comming-container">
+
+
+        <form id="searchForm" class="header-searchForm">
+            <div class="searchForm-container">
+                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" placeholder="Sonic 2">
+            </div>
+        </form>
+    </header>
+    
+
+    <section id="coming" class="comming-container inactive">
         <div class="comming-title">
             <h2>Comming son</h2>
         </div>
@@ -25,12 +40,7 @@
         
         
     </section>
-    <section class="searchForm">
-        <div class="searchForm-container">
-            <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="text">
-        </div>
-    </section>
+    
 
     
     <section id="trendingPreview" class="trendingPreview-container">
@@ -51,6 +61,34 @@
     </article>
 
     </section>
+
+    <section id="genericList" class="genericList-container inactive">
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+    
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+    
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+      </section>
+
+
     <section id="categoriesPreview" class="categoriesPreview-container">
         <article class="categoriesPreview-list">
         <!-- <div class="category-container">
@@ -58,6 +96,62 @@
         </div> -->
     </article>
     </section>
+
+    <section id="movieDetail" class="movieDetail-container inactive">
+        <h1 class="movieDetail-title">Deadpool</h1>
+        <span class="movieDetail-score">7.6</span>
+        <p class="movieDetail-description">
+          Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life.
+        </p>
+    
+        <article class="categories-list">
+          <div class="category-container">
+            <h3 id="id28" class="category-title">Romance</h3>
+          </div>
+    
+          <div class="category-container">
+            <h3 id="id16" class="category-title">Drama</h3>
+          </div>
+    
+          <div class="category-container">
+            <h3 id="id14" class="category-title">Acción</h3>
+          </div>
+        </article>
+    
+        <article class="relatedMovies-container">
+          <h2 class="relatedMovies-title">Películas similares</h2>
+    
+          <div class="relatedMovies-scrollContainer">
+            <div class="movie-container">
+              <img
+                src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+                class="movie-img"
+                alt="Nombre de la película"
+              />
+            </div>
+            
+            <div class="movie-container">
+              <img
+                src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+                class="movie-img"
+                alt="Nombre de la película"
+              />
+            </div>
+            
+            <div class="movie-container">
+              <img
+                src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+                class="movie-img"
+                alt="Nombre de la película"
+              />
+            </div>
+          </div>
+        </article>
+      </section>
+
+
+
+
     <script src="./src/nodes.js"></script>
     <script type="module" src="./src/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
