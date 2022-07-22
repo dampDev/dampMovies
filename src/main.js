@@ -86,12 +86,12 @@ async function getCategoriesPreview(){
        
 
 
-        const categoryTitle= document.createElement('h3');
-        
-       
-
+        const categoryTitle= document.createElement('h3');      
         categoryTitle.classList.add('category-title');
         categoryTitle.setAttribute('id','id'+category.id);
+        categoryTitle.addEventListener('click',() => {
+            location.hash = `#category=${category.id}-${category.name}`;
+        });
         const categoryTitleText = document.createTextNode(category.name);
 
         categoryTitle.appendChild(categoryTitleText);
@@ -102,6 +102,68 @@ async function getCategoriesPreview(){
         
 
         
+        
+
+    });
+   
+
+}
+
+async function getMoviesByCategory(id){
+    const { data } = await api('discover/movie',{
+        params:{
+            with_genres: id,
+        }
+    });
+    
+    
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+    trendingMoviesPreviewList.innerHTML="";
+
+    movies.forEach(movie => {
+        
+
+        const movieContainer = document.createElement('div');
+        movieContainer.classList.add('movie-container');
+
+
+        const movieImg = document.createElement('img');
+        // const h3title = document.createElement('h3');
+        const voto_averege = document.createElement('p');
+       
+
+        movieImg.classList.add('movie-img');
+        movieImg.setAttribute('alt', movie.title)
+        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
+
+        // h3title.classList.add('title-movie');
+        // // h3title.setAttribute(movie.title);
+        // const h3titleText = document.createTextNode(movie.title);
+
+        voto_averege.classList.add('vote-average-movie');
+
+        
+        
+        const voto_averegeText = document.createTextNode(movie.vote_average);
+        
+       
+
+        
+        movieContainer.appendChild(movieImg);
+        // movieContainer.appendChild(h3title)
+        movieContainer.appendChild(voto_averege);
+
+
+       
+
+      
+        // h3title.appendChild(h3titleText);
+        voto_averege.appendChild(voto_averegeText);
+
+        trendingMoviesPreviewList.appendChild(movieContainer);
         
 
     });
