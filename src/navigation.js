@@ -37,7 +37,7 @@ function navigator(){
 function homePage(){
     console.log('home!!');
 
-    headerSection.classList.remove('header-container');
+    headerSection.classList.remove('header-container--long');
     headerSection.style.background = '';
     arrowBtn.classList.add('inactive');
     headerTitle.classList.remove('inactive');
