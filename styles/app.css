@@ -48,6 +48,15 @@ h1 {
     align-items: center;
 }
 
+.searchForm-container button {
+   background-color: transparent;
+   border: none;
+}
+
+.searchForm-container button span i {
+    color: var(--text-color);
+}
+
 
 .searchForm-container input{
     width: 85%;
@@ -186,7 +195,7 @@ h2{
 /* movie detail */
 .movieDetail-container {
     width: 100%;
-    height: auto;
+    height: 420px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     padding: 5px 5px;
@@ -222,8 +231,8 @@ h2{
     flex-wrap: wrap;
   }
   
-  .movieDetail-description {
-   
+  .movieDetail-description p{
+    margin: 0 0 24px 0;
   }
   
   .relatedMovies-container {
