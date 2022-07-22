@@ -11,7 +11,7 @@
 }
 html{
     color: var(--text-color);
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Josefin Sans', sans-serif;
 }
 body{
 background-color: rgba(26, 38, 60, 0.76);
@@ -178,37 +178,31 @@ h2{
     margin: 0 auto;
 }
 
-/* .category-container{
-    width: 90%;
-    font-size: 1.4rem;
-    font-weight: lighter;
-    margin-top: 5px;
-    padding-right: 10px;
-    color: #536471;
-    cursor: pointer;
-
-} */
 
 .category-title{
     padding: 5px;
+    font-weight: 200;
+    font-size: 0.8rem;
 }
 /* movie detail */
 .movieDetail-container {
     width: 100%;
-    height: 420px;
+    height: 460px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    padding: 5px 5px;
+    padding: 10px 10px 10px;
     margin-top: 403px;
     z-index: 1;
     position: absolute;
     background-color: rgba(21, 20, 31, 1);
+    
   }
   .movieDetail-title {
     display: inline-block;
     width: 80%;
     margin: 0 0 16px 0;
     padding: 0;
+    font-weight: 700;
   }
   
   .movieDetail-score {
@@ -222,17 +216,54 @@ h2{
     color: var(--yellow);
     padding-right: 4px;
   }
+  .container-moviedetail-data{
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px grey;
+    
+
+  }
+  .container-movie--data {
+    width: 45%;
+
+  }
+
+  .title-movie-data{
+    font-weight: 400;
+    font-size: 1rem;
+    padding-top: 5px;
+  }
+
+  .container-movie--data div p{
+    font-weight: 200;
+    font-size: 0.8rem;
+    padding-top: 6px;
+  }
 
   .categories-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    flex-wrap: wrap;
+    gap: 5px;
+    font-weight: 400;
+    
+    margin-bottom: 15px;
+
+  }
+
+  .category-container{
+    background: rgba(250, 240, 202, 0.05);
+    border: solid 1px rgb(250 240 202 / 5%);
+    border-radius: 15px;
+  }
+  .movieDetail-description{
+    margin-top: 6px;
   }
   
   .movieDetail-description p{
     margin: 0 0 24px 0;
+    font-weight: 200;
   }
   
   .relatedMovies-container {
