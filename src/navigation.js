@@ -62,6 +62,19 @@ function categoriesPage(){
 }
 function movieDetailPage(){
     console.log('movie!!');
+
+    headerSection.classList.add('header-container--long');
+    // headerSection.style.background = '';
+    arrowBtn.classList.remove('inactive');
+    headerTitle.classList.add('inactive');
+    comingSection.classList.add('inactive');
+    headerCategoryTitle.classList.add('inactive');
+    searchForm.classList.add('inactive');
+
+    trendingPreviewSection.classList.add('inactive');
+    categoriesPreviewSection.classList.add('inactive');
+    genericSection.classList.add('inactive');   
+    movieDetailSection.classList.remove('inactive');
 }
 function searchPage(){
     console.log('search!!');

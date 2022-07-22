@@ -21,6 +21,17 @@ background-color: rgba(26, 38, 60, 0.76);
 h1 {
     text-align: center;
 }
+
+.header-container--long {
+    background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg');
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
+    background-size: cover !important;
+    height: 480px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
 .searchForm{
     width: 100%;
     height: 48px;
@@ -116,7 +127,7 @@ h2{
     
 }
 
-p{
+.trendingPreview-movieList p{
     position: absolute;
     background: rgba(218, 218, 218, 0.3);
     backdrop-filter: blur(4.81px);
@@ -172,6 +183,80 @@ p{
 .category-title{
     padding: 5px;
 }
+/* movie detail */
+.movieDetail-container {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 5px 5px;
+    margin-top: 403px;
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(21, 20, 31, 1);
+  }
+  .movieDetail-title {
+    display: inline-block;
+    width: 80%;
+    margin: 0 0 16px 0;
+    padding: 0;
+  }
+  
+  .movieDetail-score {
+    display: inline-block;
+    text-align: right;
+    width: 18%;
+    font-weight: var(--font-weight-title2);
+  }
+  .movieDetail-score::before {
+    content: '★';
+    color: var(--yellow);
+    padding-right: 4px;
+  }
+
+  .categories-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  
+  .movieDetail-description {
+   
+  }
+  
+  .relatedMovies-container {
+    margin-top: 24px;
+    height: 216px;
+  }
+  
+  .relatedMovies-title {
+    margin-bottom: 16px;
+  }
+  
+  .relatedMovies-scrollContainer {
+    position: absolute;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: calc(100vw - 24px);
+    padding-bottom: 16px;
+  }
+  
+  .relatedMovies-scrollContainer .movie-container {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  
+  .relatedMovies-scrollContainer .movie-img {
+    width: 125px;
+    min-width: 125px;
+    max-width: 125px;
+    height: 187.5px;
+    min-height: 187.5px;
+    max-height: 187.5px;
+  }
 
 .inactive {
     display: none;
