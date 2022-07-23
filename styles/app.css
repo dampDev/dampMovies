@@ -201,6 +201,7 @@ h2{
   overflow-x: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type:x proximity;
+    gap: 5px;
 }
 
 
