@@ -13,6 +13,7 @@ const trendingMoviesPreviewList = document.querySelector('.trendingPreview-movie
 const categoriesPreviewList = document.querySelector('.categoriesPreview-list');
 const movieDetailCategoriesList = document.querySelector('#movieDetail .categories-list');
 const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
+const mainContainerMovies = document.querySelector('.main-container')
 
 // Elements
 const headerTitle = document.querySelector('.header-title');

@@ -17,6 +17,11 @@ body{
 background-color: rgba(26, 38, 60, 0.76);
     /* background-color: rgba(21, 20, 31, 1); */
     min-width: 320px;
+
+}
+.main-container{
+  display: grid;
+
 }
 h1 {
     text-align: center;
@@ -119,7 +124,7 @@ h2{
 }
 
 
-.movie-container{
+.trendingPreview-movieList .movie-container{
     position: relative;
     scroll-snap-align: end ;
     display: flex;
@@ -145,6 +150,19 @@ h2{
     
     
 }
+
+.genericList-container {
+  order: 2;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  
+
+}
+
+
 
 .title-movie{
     width: 85%;
@@ -176,6 +194,13 @@ h2{
     flex-direction: row;
     width: 90%;
     margin: 0 auto;
+}
+.categoriesPreview-list--row{
+  order: 1;
+  display: flex;
+  overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type:x proximity;
 }
 
 

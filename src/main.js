@@ -11,81 +11,39 @@ params: {
 }
 });
 
-async function getTrandingMoviesPreview(){
-    const { data } = await api('trending/movie/day');
-    
-    
-        
-    const movies = data.results;
-    console.log({data, movies});
-
-    trendingMoviesPreviewList.innerHTML="";
-
+// Utils
+function createMovies(movies,container){
+    container.innerHTML = '';
     movies.forEach(movie => {
         
 
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
 
-
         const movieImg = document.createElement('img');
-        // const h3title = document.createElement('h3');
-        const voto_averege = document.createElement('p');
-       
+              
 
         movieImg.classList.add('movie-img');
         movieImg.setAttribute('alt', movie.title)
         movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
 
-        // h3title.classList.add('title-movie');
-        // // h3title.setAttribute(movie.title);
-        // const h3titleText = document.createTextNode(movie.title);
-
-        voto_averege.classList.add('vote-average-movie');
-
-        
-        
-        const voto_averegeText = document.createTextNode(movie.vote_average);
-        
        
-
-        
         movieContainer.appendChild(movieImg);
-        // movieContainer.appendChild(h3title)
-        movieContainer.appendChild(voto_averege);
+        
 
-
-       
-
-      
-        // h3title.appendChild(h3titleText);
-        voto_averege.appendChild(voto_averegeText);
-
-        trendingMoviesPreviewList.appendChild(movieContainer);
+        container.appendChild(movieContainer);
         
 
     });
-   
-
 }
 
-async function getCategoriesPreview(){
-    const { data } = await api('genre/movie/list');
-    
-    // const data = await res.json();
-        
-    const categories = data.genres;
-
-     categoriesPreviewList.innerHTML='';
-
-    
+function createCategories(categories, container){
+    container.innerHTML='';
     categories.forEach(category => {
       
 
         const categoryContainer = document.createElement('div');
        
-
-
         const categoryTitle= document.createElement('h3');      
         categoryTitle.classList.add('category-title');
         categoryTitle.setAttribute('id','id'+category.id);
@@ -96,7 +54,7 @@ async function getCategoriesPreview(){
 
         categoryTitle.appendChild(categoryTitleText);
         categoryContainer.appendChild(categoryTitle);
-        categoriesPreviewList.appendChild(categoryContainer);
+        container.appendChild(categoryContainer);
 
 
         
@@ -105,6 +63,33 @@ async function getCategoriesPreview(){
         
 
     });
+}
+
+// llamdos a la Api
+
+async function getTrandingMoviesPreview(){
+    const { data } = await api('trending/movie/day');  
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+   createMovies(movies,trendingMoviesPreviewList);  
+   
+
+}
+
+
+async function getCategoriesPreview(){
+    const { data } = await api('genre/movie/list');
+    
+    // const data = await res.json();
+        
+    const categories = data.genres;
+
+     createCategories(categories, categoriesPreviewList);
+
+    
+    
    
 
 }
@@ -121,57 +106,11 @@ async function getMoviesByCategory(id){
     const movies = data.results;
     console.log({data, movies});
 
-    trendingMoviesPreviewList.innerHTML="";
-
-    movies.forEach(movie => {
-        
-
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container');
-
-
-        const movieImg = document.createElement('img');
-        // const h3title = document.createElement('h3');
-        const voto_averege = document.createElement('p');
-       
-
-        movieImg.classList.add('movie-img');
-        movieImg.setAttribute('alt', movie.title)
-        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
-
-        // h3title.classList.add('title-movie');
-        // // h3title.setAttribute(movie.title);
-        // const h3titleText = document.createTextNode(movie.title);
-
-        voto_averege.classList.add('vote-average-movie');
-
-        
-        
-        const voto_averegeText = document.createTextNode(movie.vote_average);
-        
-       
-
-        
-        movieContainer.appendChild(movieImg);
-        // movieContainer.appendChild(h3title)
-        movieContainer.appendChild(voto_averege);
-
-
-       
-
-      
-        // h3title.appendChild(h3titleText);
-        voto_averege.appendChild(voto_averegeText);
-
-        trendingMoviesPreviewList.appendChild(movieContainer);
-        
-
-    });
-   
+    createMovies(movies,genericSection);
 
 }
 
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
 
-export{getTrandingMoviesPreview, getCategoriesPreview};
+export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory};
