@@ -125,7 +125,18 @@ async function getMoviesBySearch(query){
     createMovies(movies,genericSection);
 }
 
+async function getTrandingMovies(){
+    const { data } = await api('trending/movie/day');  
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+   createMovies(movies,genericSection);  
+   
+
+}
+
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
 
-export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch};
+export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies};
