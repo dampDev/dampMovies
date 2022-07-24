@@ -110,7 +110,22 @@ async function getMoviesByCategory(id){
 
 }
 
+async function getMoviesBySearch(query){
+    const { data } = await api('search/movie',{
+        params:{
+            query,
+        }
+    });
+    
+    
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+    createMovies(movies,genericSection);
+}
+
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
 
-export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory};
+export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch};
