@@ -19,6 +19,9 @@ function createMovies(movies,container){
 
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
+        movieContainer.addEventListener('click',()=> {
+            location.hash= 'movie='+movie.id;
+        });
 
         const movieImg = document.createElement('img');
               
