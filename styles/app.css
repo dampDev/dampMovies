@@ -227,7 +227,6 @@ h2{
   }
   .movieDetail-title {
     display: inline-block;
-    width: 80%;
     margin: 0 0 16px 0;
     padding: 0;
     font-weight: 700;
@@ -270,14 +269,9 @@ h2{
 
   .categories-list {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    gap: 5px;
+    flex-wrap: wrap;
     font-weight: 400;
-    
     margin-bottom: 15px;
-
   }
 
   .category-container{
