@@ -1,4 +1,4 @@
-import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies } from './main.js';
+import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies,getMovieById,getMovieSimilar } from './main.js';
 
 searchFormBtn.addEventListener('click',()=>{
    
@@ -70,6 +70,7 @@ getTrandingMoviesPreview();
 function categoriesPage(){
     console.log('category!!');
     headerSection.classList.remove('header-container');
+    headerSection.classList.remove('header-container--long')
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
     headerTitle.classList.add('inactive');
@@ -107,6 +108,12 @@ function movieDetailPage(){
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.add('inactive');   
     movieDetailSection.classList.remove('inactive');
+
+    // '#movie', '231516'
+    const [_,movieId]= location.hash.split('=');
+    getMovieById(movieId);
+    
+
 }
 function searchPage(){
     console.log('search!!');
