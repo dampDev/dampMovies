@@ -1,4 +1,4 @@
-import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies,getMovieById,getMovieSimilar } from './main.js';
+import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies,getMovieById,getMovieSimilar,getDiscoverMovies } from './main.js';
 
 searchFormBtn.addEventListener('click',()=>{
    
@@ -14,7 +14,15 @@ trendingBtn.addEventListener('click', ()=>{
 arrowBtn.addEventListener('click', ()=>{
     history.back();
     // location.hash = '#home';
-})
+});
+
+homeBtn.addEventListener('click',()=>{
+    location.hash = '#home';
+});
+
+discoverBtn.addEventListener('click', ()=>{
+    location.hash ='#discover';
+});
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
@@ -31,7 +39,10 @@ function navigator(){
         movieDetailPage();
     } else if(location.hash.startsWith('#category=')){
         categoriesPage();
-    } else {
+    } else if(location.hash.startsWith('#discover')){
+        discoverPage();
+    } 
+    else {
         homePage();
     }
 
@@ -51,7 +62,7 @@ function homePage(){
     comingSection.classList.remove('inactive');
 
     headerCategoryTitle.classList.add('inactive');
-    searchForm.classList.remove('inactive');
+    searchForm.classList.add('inactive');
 
     trendingPreviewSection.classList.remove('inactive');
     categoriesPreviewSection.classList.remove('inactive');
@@ -153,6 +164,29 @@ function trendsPage(){
     headerCategoryTitle.innerHTML= 'Tendencias';
 
     getTrandingMovies();
+    
+
+}
+
+function discoverPage(){
+    
+    console.log('Discover!');
+    
+    headerSection.classList.remove('header-container-long');
+    headerSection.style.background = '';
+    arrowBtn.classList.remove('inactive');
+    headerTitle.classList.add('inactive');
+    comingSection.classList.add('inactive');
+    headerCategoryTitle.classList.remove('inactive');
+    searchForm.classList.remove('inactive');
+    categoriesPreviewList.classList.add('categoriesPreview-list');
+    trendingPreviewSection.classList.add('inactive');
+    categoriesPreviewSection.classList.remove('inactive');
+    genericSection.classList.remove('inactive');   
+    movieDetailSection.classList.add('inactive');
+    headerCategoryTitle.innerHTML= 'Tendencias';
+
+    getDiscoverMovies();
     
 
 }

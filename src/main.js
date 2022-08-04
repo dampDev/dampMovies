@@ -139,6 +139,17 @@ async function getTrandingMovies(){
    
 
 }
+async function getDiscoverMovies(){
+    const { data } = await api('discover/movie');  
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+   createMovies(movies,genericSection);  
+   
+
+}
+
 
 async function getMovieById(id){
     const { data : movie } = await api('movie/'+id);  
@@ -171,4 +182,5 @@ async function getMovieSimilar(id){
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
 
-export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies,getMovieById, getMovieSimilar};
+export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,
+    getTrandingMovies,getMovieById, getMovieSimilar,getDiscoverMovies};
