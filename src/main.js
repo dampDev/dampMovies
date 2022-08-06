@@ -71,13 +71,56 @@ function createCategories(categories, container){
 
 // llamdos a la Api
 
+
 async function getTrandingMoviesPreview(){
     const { data } = await api('trending/movie/day');  
         
     const movies = data.results;
     console.log({data, movies});
 
+    const primero = movies[0];
+    console.log(primero);
+
    createMovies(movies,trendingMoviesPreviewList);  
+   
+
+}
+
+// pelicula popular reciente
+async function getPopularMovies(){
+    const { data } = await api('movie/popular');  
+        
+    const movies = data.results;
+    console.log({data, movies});
+
+    const primero = movies[0];
+    console.log(primero);
+
+//    createMovies(movies,trendingMoviesPreviewList);  
+
+
+    const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList')   
+
+        const movieContainer = document.createElement('div');
+        movieContainer.classList.add('movie-container');
+        movieContainer.addEventListener('click',()=> {
+            location.hash= 'movie='+primero.id;
+        });
+
+        const movieImg = document.createElement('img');
+              
+
+        movieImg.classList.add('movie-img');
+        movieImg.setAttribute('alt', primero.title)
+        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ primero.poster_path);
+
+       
+        movieContainer.appendChild(movieImg);
+        trendingPreviewMoviesContainer.appendChild(movieContainer);
+        
+
+
+
    
 
 }
@@ -181,6 +224,7 @@ async function getMovieSimilar(id){
 
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
+getPopularMovies();
 
 export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,
     getTrandingMovies,getMovieById, getMovieSimilar,getDiscoverMovies};
