@@ -75,7 +75,7 @@ function homePage(){
 
 
     getCategoriesPreview();
-// getTrandingMoviesPreview();
+    getTrandingMoviesPreview();
 }
 
 function categoriesPage(){

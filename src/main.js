@@ -99,24 +99,24 @@ async function getPopularMovies(){
 //    createMovies(movies,trendingMoviesPreviewList);  
 
 
-    const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList')   
+    const comingPreviewMoviesContainer = document.querySelector('#coming .comming-container')   
 
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container');
-        movieContainer.addEventListener('click',()=> {
+        const comingContainer = document.createElement('div');
+        comingContainer.classList.add('comming-img-container');
+        comingContainer.addEventListener('click',()=> {
             location.hash= 'movie='+primero.id;
         });
 
         const movieImg = document.createElement('img');
               
 
-        movieImg.classList.add('movie-img');
+        movieImg.classList.add('img-comming');
         movieImg.setAttribute('alt', primero.title)
-        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300/'+ primero.poster_path);
+        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w500/'+ primero.backdrop_path);
 
        
-        movieContainer.appendChild(movieImg);
-        trendingPreviewMoviesContainer.appendChild(movieContainer);
+        comingContainer.appendChild(movieImg);
+        comingPreviewMoviesContainer.appendChild(comingContainer);
         
 
 
