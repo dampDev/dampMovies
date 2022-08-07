@@ -107,13 +107,23 @@ async function getPopularMovies(){
             location.hash= 'movie='+primero.id;
         });
 
-        const movieImg = document.createElement('img');
+        const movieImg = document.createElement('div');
               
 
         movieImg.classList.add('img-comming');
-        movieImg.setAttribute('alt', primero.title)
-        movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w500/'+ primero.backdrop_path);
+        // movieImg.setAttribute('alt', primero.title)
+        // movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w500/'+ primero.backdrop_path);
 
+        const movieImgUrl = 'https://image.tmdb.org/t/p/w500/' + primero.backdrop_path;
+        movieImg.style.background = `
+        
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,0.35)19.27%,
+        rgba(0,0,0,0)29.17%
+    ),
+    url(${movieImgUrl})`;
+    
        
         comingContainer.appendChild(movieImg);
         comingPreviewMoviesContainer.appendChild(comingContainer);
