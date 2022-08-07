@@ -54,7 +54,8 @@ function navigator(){
 
 function homePage(){
     console.log('home!!');
-    mainContainerMovies.classList.remove('main-container')
+    mainContainerMovies.classList.remove('main-container');
+    menuContainer.classList.remove('inactive');
     headerSection.classList.remove('header-container--long');
     headerSection.style.background = '';
     arrowBtn.classList.add('inactive');
@@ -110,6 +111,7 @@ function movieDetailPage(){
     headerSection.classList.add('header-container--long');
     // headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
+    menuContainer.classList.add('inactive');
     headerTitle.classList.add('inactive');
     comingSection.classList.add('inactive');
     headerCategoryTitle.classList.add('inactive');

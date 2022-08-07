@@ -326,6 +326,7 @@ h2{
   .relatedMovies-scrollContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
   }
   
   .relatedMovies-scrollContainer .movie-container {

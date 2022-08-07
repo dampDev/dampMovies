@@ -19,6 +19,7 @@ const mainContainerMovies = document.querySelector('.main-container')
 const headerTitle = document.querySelector('.header-title');
 const arrowBtn = document.querySelector('.header-arrow');
 const headerCategoryTitle = document.querySelector('.header-title--categoryView');
+const menuContainer= document.querySelector('.menu-container');
 
 const searchFormInput = document.querySelector('#searchForm input');
 const searchFormBtn = document.querySelector('#searchBtn');
