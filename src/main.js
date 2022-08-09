@@ -42,6 +42,16 @@ function createMovies(movies,container, lazyLoad= false){
             lazyLoad ? 'data-img' : 'src',
             'https://image.tmdb.org/t/p/w300' + movie.poster_path,
           );
+
+          movieImg.addEventListener('error', () => {
+            
+            movieImg.style.paddingTop = "100px";
+            movieImg.style.fontSize = "1.5rem";
+            // movieImg.style.display= "none";
+
+          });
+
+
       
           if (lazyLoad) {
             lazyLoader.observe(movieImg);

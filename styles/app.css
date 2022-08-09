@@ -148,6 +148,8 @@ h2{
 
 .movie-container{
   cursor: pointer;
+  display: flex;
+ text-align: center;
 }
 .movie-container--loading {
   background: gray;
