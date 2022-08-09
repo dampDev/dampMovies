@@ -44,6 +44,7 @@ function createMovies(movies,container, lazyLoad= false){
           );
 
           movieImg.addEventListener('error', () => {
+        //     movieImg.style.paddingTop = "50%";
             
             movieImg.style.paddingTop = "100px";
             movieImg.style.fontSize = "1.5rem";
@@ -128,7 +129,8 @@ async function getPopularMovies(){
         const comingContainer = document.createElement('div');
         comingContainer.classList.add('comming-img-container');
         comingContainer.addEventListener('click',()=> {
-            location.hash= 'movie='+primero.id;
+            
+            location.hash= '#moviePreview='+movie.id;
         });
 
         const movieImg = document.createElement('div');
@@ -151,13 +153,8 @@ async function getPopularMovies(){
        
         comingContainer.appendChild(movieImg);
         comingPreviewMoviesContainer.appendChild(comingContainer);
-        
-
-
-
-   
-
 }
+
 
 
 async function getCategoriesPreview(){
@@ -226,6 +223,54 @@ async function getDiscoverMovies(){
    
 
 }
+async function getMoviePreview(id){
+    const { data : movie } = await api('movie/'+id); 
+    moviePreviewDetailcontainer.innerHTML="" ;
+
+    const movieContainer = document.createElement('div');
+    movieContainer.classList.add('movie-container');
+    movieContainer.addEventListener('click',()=> {
+        location.hash= 'movie='+movie.id;
+    });
+
+    const movieImg = document.createElement('img');
+          
+
+    movieImg.classList.add('movie-img');
+    movieImg.setAttribute('alt', movie.title)
+    movieImg.setAttribute('src',
+        'https://image.tmdb.org/t/p/w300' + movie.poster_path,
+      );
+
+      movieImg.addEventListener('error', () => {
+    //     movieImg.style.paddingTop = "50%";
+        
+        movieImg.style.paddingTop = "100px";
+        movieImg.style.fontSize = "1.5rem";
+        // movieImg.style.display= "none";
+
+      });
+      
+    movieContainer.appendChild(movieImg);      
+    moviePreviewDetailcontainer.appendChild(movieContainer);
+
+    // const movieImgUrl = 'https://image.tmdb.org/t/p/w500/' + movie.poster_path;
+    // headerSection.style.background = `
+    // linear-gradient(
+    //     180deg,
+    //     rgba(0,0,0,0.35)19.27%,
+    //     rgba(0,0,0,0)29.17%
+    // ),
+    // url(${movieImgUrl})`;
+        
+    // movieDetailTitle.textContent = movie.title;
+    // movieDetailDescription.textContent = movie.overview;
+    // movieDetailScore.textContent = movie.vote_average;
+
+    // createCategories(movie.genres, movieDetailCategoriesList);
+    // getMovieSimilar(id); 
+
+}
 
 
 async function getMovieById(id){
@@ -261,4 +306,4 @@ async function getMovieSimilar(id){
 getPopularMovies();
 
 export{getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,
-    getTrandingMovies,getMovieById, getMovieSimilar,getDiscoverMovies};
+    getTrandingMovies,getMovieById, getMovieSimilar,getDiscoverMovies,getMoviePreview};

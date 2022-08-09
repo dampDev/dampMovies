@@ -1,4 +1,5 @@
-import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,getTrandingMovies,getMovieById,getMovieSimilar,getDiscoverMovies } from './main.js';
+import { getTrandingMoviesPreview, getCategoriesPreview,getMoviesByCategory,getMoviesBySearch,
+    getTrandingMovies,getMovieById,getMovieSimilar,getDiscoverMovies,getMoviePreview } from './main.js';
 
 searchFormBtn.addEventListener('click',()=>{
    
@@ -36,18 +37,21 @@ function navigator(){
     } else if(location.hash.startsWith('#search=')){
         searchPage();
     } else if(location.hash.startsWith('#movie=')){
-        movieDetailPage();
+        // movieDetailPage();
+        moviePreview();
     } else if(location.hash.startsWith('#category=')){
         categoriesPage();
     } else if(location.hash.startsWith('#discover')){
         discoverPage();
-    } 
+    } else if(location.hash.startsWith('#moviePreview=')){
+        moviePreview();
+    }
     else {
         homePage();
     }
 
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop=0;
+    // document.documentElement.scrollTop=0;
 
     
 }
@@ -103,6 +107,12 @@ function categoriesPage(){
 
     headerCategoryTitle.innerHTML = categoryName;
     getMoviesByCategory(categoryId);
+    
+}
+function moviePreview(){
+    moviePreviewDetailcontainer.classList.remove('inactive')
+    const [_,movieId]= location.hash.split('=');
+    getMoviePreview(movieId);
     
 }
 function movieDetailPage(){
