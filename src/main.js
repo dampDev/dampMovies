@@ -226,8 +226,7 @@ async function getMoviePreview(id) {
     movieContainer.addEventListener('click', () => {
         location.hash = 'moviePreview=' + movie.id;
     });
-    const movieTitlePreview = document.createElement('h3')
-    const h3MovieTitlePreview = document.createTextNode(movie.title);
+    
 
 
     const movieImg = document.createElement('img');
@@ -244,21 +243,25 @@ async function getMoviePreview(id) {
         movieImg.style.paddingTop = "100px";
         movieImg.style.fontSize = "1.5rem";
        
-
     });
-   
+    const moviePreviewDiv = document.createElement('div')
+    moviePreviewDiv.classList.add('moviePreviewContent');
+    const movieTitlePreview = document.createElement('h3')
+    const h3MovieTitlePreview = document.createTextNode(movie.title);
+    const movieOverviewPreview = document.createElement('p');
+    const pMovieOverview=document.createTextNode(movie.overview);
+       
     
-
-    createCategories(movie.genres, moviePreviewDetailcontainer);
-    
-    
-    movieDetailDescription.textContent = movie.overview;
-    movieDetailScore.textContent = movie.vote_average;
-
-    movieTitlePreview.appendChild(h3MovieTitlePreview);
-    moviePreviewDetailcontainer.appendChild(movieTitlePreview)
-    movieContainer.appendChild(movieImg);    
     moviePreviewDetailcontainer.appendChild(movieContainer);
+    movieContainer.appendChild(movieImg);   
+    moviePreviewDetailcontainer.appendChild(moviePreviewDiv);
+    moviePreviewDiv.appendChild(movieTitlePreview);
+    movieTitlePreview.appendChild(h3MovieTitlePreview);
+    moviePreviewDiv.appendChild(movieOverviewPreview);
+    movieOverviewPreview.appendChild(pMovieOverview);
+    
+     
+    
 
 
 
