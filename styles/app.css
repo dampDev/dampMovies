@@ -405,17 +405,39 @@ h2{
     color: var(--gradiante-orange)
 
   }
-
-  .moviePreviewDetail-container{
+  .main-PreviewDetail {
     position: fixed;
-    top: 251px;
-    transition: 2s;
+    z-index: 4;
+    bottom: 58px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+     
     background: #15141f;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    transition-property: widtht;
+    transition-duration: 2s;
+    transition-delay: 5s;
+  }
+
+  .main-PreviewDetail span{
+    order: 2;
+  }
+
+  /* .moviePreviewDetail-container{
+    
+    top: 251px;
+   
 
 
+  } */
+
+  .moviePreviewDetail-container .movie-container{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
   }
 
   .moviePreviewDetail-container .movie-img{

@@ -17,6 +17,8 @@ arrowBtn.addEventListener('click', ()=>{
     // location.hash = '#home';
 });
 
+
+
 homeBtn.addEventListener('click',()=>{
     location.hash = '#home';
 });
@@ -24,6 +26,11 @@ homeBtn.addEventListener('click',()=>{
 discoverBtn.addEventListener('click', ()=>{
     location.hash ='#discover';
 });
+
+closeBtn.addEventListener('click',()=>{
+    mainPreviewDetailContainer.classList.add('inactive');
+})
+
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
@@ -34,17 +41,22 @@ function navigator(){
 
     if(location.hash.startsWith('#trends')){
         trendsPage();
+        document.documentElement.scrollTop=0;
     } else if(location.hash.startsWith('#search=')){
         searchPage();
+        document.documentElement.scrollTop=0;
     } else if(location.hash.startsWith('#movie=')){
         // movieDetailPage();
         moviePreview();
     } else if(location.hash.startsWith('#category=')){
         categoriesPage();
+        document.documentElement.scrollTop=0;
     } else if(location.hash.startsWith('#discover')){
         discoverPage();
+        document.documentElement.scrollTop=0;
     } else if(location.hash.startsWith('#moviePreview=')){
-        moviePreview();
+        document.documentElement.scrollTop=0;
+        movieDetailPage();
     }
     else {
         homePage();
@@ -58,6 +70,7 @@ function navigator(){
 
 function homePage(){
     console.log('home!!');
+    mainPreviewDetailContainer.classList.add('inactive');
     mainContainerMovies.classList.remove('main-container');
     menuContainer.classList.remove('inactive');
     headerSection.classList.remove('header-container--long');
@@ -110,6 +123,7 @@ function categoriesPage(){
     
 }
 function moviePreview(){
+    mainPreviewDetailContainer.classList.remove('inactive')
     moviePreviewDetailcontainer.classList.remove('inactive')
     const [_,movieId]= location.hash.split('=');
     getMoviePreview(movieId);
@@ -117,7 +131,7 @@ function moviePreview(){
 }
 function movieDetailPage(){
     console.log('movie!!');
-
+    mainPreviewDetailContainer.classList.add('inactive');
     headerSection.classList.add('header-container--long');
     // headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
@@ -140,7 +154,7 @@ function movieDetailPage(){
 }
 function searchPage(){
     console.log('search!!');
-
+    mainPreviewDetailContainer.classList.add('inactive');
     headerSection.classList.remove('header-container-long');
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
@@ -183,7 +197,8 @@ function trendsPage(){
 function discoverPage(){
     
     console.log('Discover!');
-    
+
+    mainPreviewDetailContainer.classList.add('inactive');
     headerSection.classList.remove('header-container-long');
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');

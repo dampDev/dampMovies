@@ -16,10 +16,12 @@ const movieDetailCategoriesList = document.querySelector('#movieDetail .categori
 const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
 const mainContainerMovies = document.querySelector('.main-container')
 const moviePreviewDetailcontainer= document.querySelector('.moviePreviewDetail-container');
+const mainPreviewDetailContainer =document.querySelector('.main-PreviewDetail');
 
 // Elements
 const headerTitle = document.querySelector('.header-title');
 const arrowBtn = document.querySelector('.header-arrow');
+const closeBtn = document.querySelector('#button-close');
 const headerCategoryTitle = document.querySelector('.header-title--categoryView');
 const menuContainer= document.querySelector('.menu-container');
 
