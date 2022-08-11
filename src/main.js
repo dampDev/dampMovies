@@ -8,7 +8,7 @@ const api = axios.create({
     },
     params: {
         'api_key': API_KEY,
-        'language': 'es-MX'
+        // 'language': 'es-MX'
     }
 });
 
@@ -68,6 +68,7 @@ function createMovies(movies, container, lazyLoad = false) {
 
 function createCategories(categories, container) {
     container.innerHTML = '';
+    console.log(categories);
     categories.forEach(category => {
 
 
@@ -86,6 +87,19 @@ function createCategories(categories, container) {
         container.appendChild(categoryContainer);
 
     });
+}
+
+function createVideo(movies){
+    console.log("video",movies);
+    videoContainer.innerHTML="";
+    movies.forEach(movie => {
+
+    const videoConten = document.createElement('iframe');
+    videoConten.setAttribute('src','https://www.youtube.com/embed/'+movie.key);
+    console.log("video",movie);
+    videoContainer.appendChild(videoConten);
+    
+});
 }
 
 // llamdos a la Api
@@ -297,6 +311,8 @@ async function getMovieById(id) {
 
     createCategories(movie.genres, movieDetailCategoriesList);
     getMovieSimilar(id);
+    getVideos(id)
+    // createVideo(movie.id);
 
 }
 
@@ -304,6 +320,22 @@ async function getMovieSimilar(id) {
     const { data } = await api(`movie/${id}/similar`);
     const relatedMovies = data.results;
     createMovies(relatedMovies, relatedMoviesContainer, true);
+
+
+}
+
+async function getVideos(id){
+const {data} = await api(`movie/${id}/videos`);
+const videosMovie = data.results;
+
+// console.log(videosMovie);
+// videoContainer.innerHTML="";
+
+// const videoConten = document.createElement('iframe');
+// videoConten.setAttribute('src','https://www.youtube.com/embed/'+videosMovie[0].key);
+// console.log("video",videosMovie[0].key);
+// videoContainer.appendChild(videoConten);
+createVideo(videosMovie);
 
 }
 

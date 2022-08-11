@@ -17,6 +17,7 @@ const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollCont
 const mainContainerMovies = document.querySelector('.main-container')
 const moviePreviewDetailcontainer= document.querySelector('.moviePreviewDetail-container');
 const mainPreviewDetailContainer =document.querySelector('.main-PreviewDetail');
+const videoContainer = document.querySelector('.video');
 
 // Elements
 const headerTitle = document.querySelector('.header-title');
