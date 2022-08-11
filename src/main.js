@@ -145,6 +145,9 @@ async function getPopularMovies() {
         rgba(0,0,0,0)29.17%
     ),
     url(${movieImgUrl})`;
+    movieImg.style.backgroundPosition= "center";
+    movieImg.style.backgroundRepeat= "no-repet"
+    movieImg.style.backgroundSize= "cover";
 
 
     comingContainer.appendChild(movieImg);
@@ -246,8 +249,12 @@ async function getMoviePreview(id) {
     });
     const moviePreviewDiv = document.createElement('div')
     moviePreviewDiv.classList.add('moviePreviewContent');
-    const movieTitlePreview = document.createElement('h3')
-    const h3MovieTitlePreview = document.createTextNode(movie.title);
+    const movieTitlePreview = document.createElement('h2')
+    const h2MovieTitlePreview = document.createTextNode(movie.title);
+
+    const releaseDate=document.createElement('p')
+    const pReleaseDate=document.createTextNode(movie.release_date)
+
     const movieOverviewPreview = document.createElement('p');
     const pMovieOverview=document.createTextNode(movie.overview);
        
@@ -256,7 +263,9 @@ async function getMoviePreview(id) {
     movieContainer.appendChild(movieImg);   
     moviePreviewDetailcontainer.appendChild(moviePreviewDiv);
     moviePreviewDiv.appendChild(movieTitlePreview);
-    movieTitlePreview.appendChild(h3MovieTitlePreview);
+    movieTitlePreview.appendChild(h2MovieTitlePreview);
+    moviePreviewDiv.appendChild(releaseDate);
+    releaseDate.appendChild(pReleaseDate);
     moviePreviewDiv.appendChild(movieOverviewPreview);
     movieOverviewPreview.appendChild(pMovieOverview);
     
