@@ -90,7 +90,7 @@ function createCategories(categories, container) {
 }
 
 function createVideo(movies){
-    console.log("video",movies);
+    // console.log("video",movies);
     videoContainer.innerHTML="";
     movies.forEach(movie => {
 
@@ -100,6 +100,17 @@ function createVideo(movies){
     videoContainer.appendChild(videoConten);
     
 });
+}
+
+function createCast(movies){
+    maincastContainer.innerHTML = '';
+    movies.forEach(movie=>{
+        const castConteiner = document.createElement('img');
+        castConteiner.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + movie.profile_path);
+       
+        maincastContainer.appendChild(castConteiner);
+    });
+    
 }
 
 // llamdos a la Api
@@ -312,6 +323,7 @@ async function getMovieById(id) {
     createCategories(movie.genres, movieDetailCategoriesList);
     getMovieSimilar(id);
     getVideos(id)
+    getCast(id)
     // createVideo(movie.id);
 
 }
@@ -328,14 +340,15 @@ async function getVideos(id){
 const {data} = await api(`movie/${id}/videos`);
 const videosMovie = data.results;
 
-// console.log(videosMovie);
-// videoContainer.innerHTML="";
-
-// const videoConten = document.createElement('iframe');
-// videoConten.setAttribute('src','https://www.youtube.com/embed/'+videosMovie[0].key);
-// console.log("video",videosMovie[0].key);
-// videoContainer.appendChild(videoConten);
 createVideo(videosMovie);
+
+}
+async function getCast(id){
+    const {data} = await api(`movie/${id}/credits`);
+    const castMovies = data.results;
+    console.log(data);
+    
+    createCast(castMovies);
 
 }
 

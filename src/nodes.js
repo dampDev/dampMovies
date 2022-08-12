@@ -18,6 +18,7 @@ const mainContainerMovies = document.querySelector('.main-container')
 const moviePreviewDetailcontainer= document.querySelector('.moviePreviewDetail-container');
 const mainPreviewDetailContainer =document.querySelector('.main-PreviewDetail');
 const videoContainer = document.querySelector('.video');
+const maincastContainer=document.querySelector('castImg--container');
 
 // Elements
 const headerTitle = document.querySelector('.header-title');
