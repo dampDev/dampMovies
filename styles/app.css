@@ -495,12 +495,13 @@ h2{
     border-radius: 15px;
     background-color: white;
     height: auto;
-    
+       
   }
 
   .castImg{
    border-top-left-radius: 15px;
    border-top-right-radius: 15px;
+   
   }
 
   .castName{

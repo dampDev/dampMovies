@@ -114,7 +114,20 @@ function createCast(cast, lazyLoad = false){
         const castImg = document.createElement('img');
         castImg.classList.add('castImg');
         castImg.setAttribute(
-            lazyLoad ? 'data-img' : 'src', 'https://www.themoviedb.org/t/p/w240_and_h266_face/' + cas.profile_path);
+            lazyLoad ? 'data-img' : 'src', 
+            'https://www.themoviedb.org/t/p/w240_and_h266_face/' + cas.profile_path);
+           
+            castImg.addEventListener('error', () => {
+                castImg.setAttribute(
+                    lazyLoad ? 'data-img' : 'src', 
+                    'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg');
+                
+                // castImg.style.paddingTop = "50px";
+                // castImg.style.fontSize = "1.5rem";
+                // castImg.style.width= "100px"
+                // castImg.style.display= "none";
+    
+            });    
 
         const namecast=document.createElement('p');
         namecast.classList.add('castName');
@@ -363,7 +376,6 @@ const videosMovie = data.results;
 createVideo(videosMovie);
 
 }
-
 async function getCast(id){
     const {data} = await api(`movie/${id}/credits`);
     const castMovies = data.cast;
