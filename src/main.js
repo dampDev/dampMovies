@@ -92,6 +92,7 @@ function createCategories(categories, container) {
 function createVideo(movies){
     // console.log("video",movies);
     videoContainer.innerHTML="";
+    document.documentElement.scrollTop=0;
     movies.forEach(movie => {
 
     const videoConten = document.createElement('iframe');
@@ -102,13 +103,32 @@ function createVideo(movies){
 });
 }
 
-function createCast(movies){
-    maincastContainer.innerHTML = '';
-    movies.forEach(movie=>{
-        const castConteiner = document.createElement('img');
-        castConteiner.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + movie.profile_path);
-       
-        maincastContainer.appendChild(castConteiner);
+function createCast(cast, lazyLoad = false){
+   
+    maincastContainer.innerHTML= "";
+    cast.forEach(cas=>{
+
+        const castcontent= document.createElement('div');
+        castcontent.classList.add('castImg--container');
+
+        const castImg = document.createElement('img');
+        castImg.classList.add('castImg');
+        castImg.setAttribute(
+            lazyLoad ? 'data-img' : 'src', 'https://www.themoviedb.org/t/p/w240_and_h266_face/' + cas.profile_path);
+
+        const namecast=document.createElement('p');
+        namecast.classList.add('castName');
+        const pnamecast= document.createTextNode(cas.name);
+
+        if (lazyLoad) {
+            lazyLoader.observe(castImg);
+        }
+
+        
+       maincastContainer.appendChild(castcontent);
+       castcontent.appendChild(castImg);
+       castcontent.appendChild(namecast)
+       namecast.appendChild(pnamecast);
     });
     
 }
@@ -343,12 +363,14 @@ const videosMovie = data.results;
 createVideo(videosMovie);
 
 }
+
 async function getCast(id){
     const {data} = await api(`movie/${id}/credits`);
-    const castMovies = data.results;
-    console.log(data);
+    const castMovies = data.cast;
     
-    createCast(castMovies);
+
+    
+    createCast(castMovies,true);
 
 }
 

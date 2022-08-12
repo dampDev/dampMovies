@@ -474,6 +474,41 @@ h2{
     right: 0;
   }
 
+  .video{
+    display: flex;
+    overflow-x: scroll;
+    gap: 10px;
+  }
+  .castContainer-scroll{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    gap: 10px;
+    height: 150px;
+  }
+  .castImg--container{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: white;
+    height: auto;
+    
+  }
+
+  .castImg{
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
+  }
+
+  .castName{
+    color: black;
+  }
+
+
+
   
 .inactive {
     display: none;
