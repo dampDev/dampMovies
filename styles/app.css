@@ -389,7 +389,7 @@ h2{
     height: 60px;
     background-color: rgba(21, 20, 31, 1);
     position: fixed;
-    bottom: 0;
+    bottom: 292px;
    overflow-x: auto;
    z-index: 2;
   }
@@ -410,7 +410,7 @@ h2{
   .main-PreviewDetail {
     position: fixed;
     z-index: 4;
-    bottom: 58px;
+    bottom: 353px;
     width: 100%;
     display: flex;
     justify-content: space-between;     

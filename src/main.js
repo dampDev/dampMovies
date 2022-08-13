@@ -1,4 +1,7 @@
 import { API_KEY } from "./secrets.js";
+import{
+    pageNav
+} from './navigation.js';
 
 
 const api = axios.create({
@@ -22,8 +25,17 @@ const lazyLoader = new IntersectionObserver((entries) => {
     });
 });
 
-function createMovies(movies, container, lazyLoad = false) {
-    container.innerHTML = '';
+function createMovies(movies, container,
+    { lazyLoad = false,
+        clean = true,
+    } = {},
+) {
+
+    if (clean) {
+        container.innerHTML = '';
+    }
+
+
     movies.forEach(movie => {
 
 
@@ -89,61 +101,61 @@ function createCategories(categories, container) {
     });
 }
 
-function createVideo(movies){
+function createVideo(movies) {
     // console.log("video",movies);
-    videoContainer.innerHTML="";
-    document.documentElement.scrollTop=0;
+    videoContainer.innerHTML = "";
+    document.documentElement.scrollTop = 0;
     movies.forEach(movie => {
 
-    const videoConten = document.createElement('iframe');
-    videoConten.setAttribute('src','https://www.youtube.com/embed/'+movie.key);
-    console.log("video",movie);
-    videoContainer.appendChild(videoConten);
-    
-});
+        const videoConten = document.createElement('iframe');
+        videoConten.setAttribute('src', 'https://www.youtube.com/embed/' + movie.key);
+        console.log("video", movie);
+        videoContainer.appendChild(videoConten);
+
+    });
 }
 
-function createCast(cast, lazyLoad = false){
-   
-    maincastContainer.innerHTML= "";
-    cast.forEach(cas=>{
+function createCast(cast, lazyLoad = false) {
 
-        const castcontent= document.createElement('div');
+    maincastContainer.innerHTML = "";
+    cast.forEach(cas => {
+
+        const castcontent = document.createElement('div');
         castcontent.classList.add('castImg--container');
 
         const castImg = document.createElement('img');
         castImg.classList.add('castImg');
         castImg.setAttribute(
-            lazyLoad ? 'data-img' : 'src', 
+            lazyLoad ? 'data-img' : 'src',
             'https://www.themoviedb.org/t/p/w240_and_h266_face/' + cas.profile_path);
-           
-            castImg.addEventListener('error', () => {
-                castImg.setAttribute(
-                    lazyLoad ? 'data-img' : 'src', 
-                    'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg');
-                
-                // castImg.style.paddingTop = "50px";
-                // castImg.style.fontSize = "1.5rem";
-                // castImg.style.width= "100px"
-                // castImg.style.display= "none";
-    
-            });    
 
-        const namecast=document.createElement('p');
+        castImg.addEventListener('error', () => {
+            castImg.setAttribute(
+                lazyLoad ? 'data-img' : 'src',
+                'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg');
+
+            // castImg.style.paddingTop = "50px";
+            // castImg.style.fontSize = "1.5rem";
+            // castImg.style.width= "100px"
+            // castImg.style.display= "none";
+
+        });
+
+        const namecast = document.createElement('p');
         namecast.classList.add('castName');
-        const pnamecast= document.createTextNode(cas.name);
+        const pnamecast = document.createTextNode(cas.name);
 
         if (lazyLoad) {
             lazyLoader.observe(castImg);
         }
 
-        
-       maincastContainer.appendChild(castcontent);
-       castcontent.appendChild(castImg);
-       castcontent.appendChild(namecast)
-       namecast.appendChild(pnamecast);
+
+        maincastContainer.appendChild(castcontent);
+        castcontent.appendChild(castImg);
+        castcontent.appendChild(namecast)
+        namecast.appendChild(pnamecast);
     });
-    
+
 }
 
 // llamdos a la Api
@@ -180,12 +192,12 @@ async function getPopularMovies() {
 
     const comingContainer = document.createElement('div');
     comingContainer.classList.add('comming-img-container');
-    comingContainer.addEventListener('click', () => {
+    // comingContainer.addEventListener('click', () => {
 
-        location.hash = 'movie=' + movie.id;
-    });
+    //     location.hash = 'movie=' + movie.id;
+    // });
 
-   
+
 
     const movieImg = document.createElement('div');
 
@@ -203,9 +215,9 @@ async function getPopularMovies() {
         rgba(0,0,0,0)29.17%
     ),
     url(${movieImgUrl})`;
-    movieImg.style.backgroundPosition= "center";
-    movieImg.style.backgroundRepeat= "no-repet"
-    movieImg.style.backgroundSize= "cover";
+    movieImg.style.backgroundPosition = "center";
+    movieImg.style.backgroundRepeat = "no-repet"
+    movieImg.style.backgroundSize = "cover";
 
 
     comingContainer.appendChild(movieImg);
@@ -262,11 +274,50 @@ async function getTrandingMovies() {
     const { data } = await api('trending/movie/day');
 
     const movies = data.results;
-    console.log({ data, movies });
+    // console.log({ data, movies });
 
-    createMovies(movies, genericSection);
+    createMovies(movies, genericSection, { lazyLoad: true, clean: true });
+
+    //     const btnLoadMore = document.createElement('button');
+    //     btnLoadMore.innerHTML='Cargas más';
+    //     btnLoadMore.addEventListener('click',getPaginatedTrandingMovies);
+
+    //     genericSection.appendChild(btnLoadMore);
+    // 
+}
+
+let page = pageNav;
+
+async function getPaginatedTrandingMovies() {
+    const {
+        scrollTop,
+        scrollHeight,
+        clientHeight
+    } = document.documentElement;
+
+    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 15);
+
+    if (scrollIsBottom) {
+        page++;
+        const { data } = await api('trending/movie/day', {
+            params: {
+                page,
+            },
+        });
+        const movies = data.results;
+        createMovies(
+            movies,
+            genericSection,
+            { lazyLoad: true, clean: false });
+    }
 
 
+
+    //     const btnLoadMore = document.createElement('button');
+    // btnLoadMore.innerHTML='Cargas más';
+    // btnLoadMore.addEventListener('click',getPaginatedTrandingMovies);
+
+    // genericSection.appendChild(btnLoadMore);
 }
 async function getDiscoverMovies() {
     const { data } = await api('discover/movie');
@@ -287,7 +338,7 @@ async function getMoviePreview(id) {
     movieContainer.addEventListener('click', () => {
         location.hash = 'moviePreview=' + movie.id;
     });
-    
+
 
 
     const movieImg = document.createElement('img');
@@ -300,25 +351,25 @@ async function getMoviePreview(id) {
     );
 
     movieImg.addEventListener('error', () => {
-        
+
         movieImg.style.paddingTop = "100px";
         movieImg.style.fontSize = "1.5rem";
-       
+
     });
     const moviePreviewDiv = document.createElement('div')
     moviePreviewDiv.classList.add('moviePreviewContent');
     const movieTitlePreview = document.createElement('h2')
     const h2MovieTitlePreview = document.createTextNode(movie.title);
 
-    const releaseDate=document.createElement('p')
-    const pReleaseDate=document.createTextNode(movie.release_date)
+    const releaseDate = document.createElement('p')
+    const pReleaseDate = document.createTextNode(movie.release_date)
 
     const movieOverviewPreview = document.createElement('p');
-    const pMovieOverview=document.createTextNode(movie.overview);
-       
-    
+    const pMovieOverview = document.createTextNode(movie.overview);
+
+
     moviePreviewDetailcontainer.appendChild(movieContainer);
-    movieContainer.appendChild(movieImg);   
+    movieContainer.appendChild(movieImg);
     moviePreviewDetailcontainer.appendChild(moviePreviewDiv);
     moviePreviewDiv.appendChild(movieTitlePreview);
     movieTitlePreview.appendChild(h2MovieTitlePreview);
@@ -326,17 +377,15 @@ async function getMoviePreview(id) {
     releaseDate.appendChild(pReleaseDate);
     moviePreviewDiv.appendChild(movieOverviewPreview);
     movieOverviewPreview.appendChild(pMovieOverview);
-    
-     
-    
 
 
 
-   
+
+
+
+
 
 }
-
-
 async function getMovieById(id) {
     const { data: movie } = await api('movie/' + id);
 
@@ -360,7 +409,6 @@ async function getMovieById(id) {
     // createVideo(movie.id);
 
 }
-
 async function getMovieSimilar(id) {
     const { data } = await api(`movie/${id}/similar`);
     const relatedMovies = data.results;
@@ -368,21 +416,20 @@ async function getMovieSimilar(id) {
 
 
 }
+async function getVideos(id) {
+    const { data } = await api(`movie/${id}/videos`);
+    const videosMovie = data.results;
 
-async function getVideos(id){
-const {data} = await api(`movie/${id}/videos`);
-const videosMovie = data.results;
-
-createVideo(videosMovie);
+    createVideo(videosMovie);
 
 }
-async function getCast(id){
-    const {data} = await api(`movie/${id}/credits`);
+async function getCast(id) {
+    const { data } = await api(`movie/${id}/credits`);
     const castMovies = data.cast;
-    
 
-    
-    createCast(castMovies,true);
+
+
+    createCast(castMovies, true);
 
 }
 
@@ -392,5 +439,10 @@ getPopularMovies();
 
 export {
     getTrandingMoviesPreview, getCategoriesPreview, getMoviesByCategory, getMoviesBySearch,
-    getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview
+    getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview,getPaginatedTrandingMovies,
+    
 };
+
+
+
+console.log("page",page);
