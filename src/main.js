@@ -275,15 +275,15 @@ async function getTrandingMovies() {
 
     const movies = data.results;
     // console.log({ data, movies });
+    if(page=1){
+        createMovies(movies, genericSection, { lazyLoad: true, clean: true });
+        
+    }
 
-    createMovies(movies, genericSection, { lazyLoad: true, clean: true });
+    
 
-    //     const btnLoadMore = document.createElement('button');
-    //     btnLoadMore.innerHTML='Cargas más';
-    //     btnLoadMore.addEventListener('click',getPaginatedTrandingMovies);
+  
 
-    //     genericSection.appendChild(btnLoadMore);
-    // 
 }
 
 let page = pageNav;
@@ -295,7 +295,7 @@ async function getPaginatedTrandingMovies() {
         clientHeight
     } = document.documentElement;
 
-    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 15);
+    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 70);
 
     if (scrollIsBottom) {
         page++;
@@ -341,7 +341,7 @@ async function getMoviePreview(id) {
 
 
 
-    const movieImg = document.createElement('img');
+    const movieImg = document.createElement('img');pageNav
 
 
     movieImg.classList.add('movie-img');

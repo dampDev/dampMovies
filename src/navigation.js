@@ -5,6 +5,7 @@ import {
 
 export let pageNav = 1;
 let infiniteScroll;
+let nocarga;
 
 searchFormBtn.addEventListener('click', () => {
 
@@ -32,6 +33,8 @@ discoverBtn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
     mainPreviewDetailContainer.classList.add('inactive');
+    history.back();
+     nocarga = 1;
 })
 
 
@@ -49,7 +52,8 @@ function navigator() {
 
     if (location.hash.startsWith('#trends')) {
         trendsPage();
-        document.documentElement.scrollTop = 0;
+        
+        // document.documentElement.scrollTop = 0;
     } else if (location.hash.startsWith('#search=')) {
         searchPage();
         document.documentElement.scrollTop = 0;
@@ -200,7 +204,12 @@ function trendsPage() {
     movieDetailSection.classList.add('inactive');
     headerCategoryTitle.innerHTML = 'Tendencias';
 
-    getTrandingMovies();
+    if(nocarga!=1){
+        getTrandingMovies();
+
+    }
+
+    
     
     infiniteScroll = getPaginatedTrandingMovies;
    
