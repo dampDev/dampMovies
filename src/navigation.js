@@ -1,9 +1,11 @@
 import {
     getTrandingMoviesPreview, getCategoriesPreview, getMoviesByCategory, getMoviesBySearch,
-    getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview,getPaginatedTrandingMovies
+    getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview,getPaginatedTrandingMovies,
+    getPaginatedMoviesBySearch,getPaginatedMoviesByCategory
 } from './main.js';
 
 export let pageNav = 1;
+export let maxPages;
 let infiniteScroll;
 let nocarga;
 
@@ -135,6 +137,7 @@ function categoriesPage() {
 
     headerCategoryTitle.innerHTML = categoryName;
     getMoviesByCategory(categoryId);
+    infiniteScroll = getPaginatedMoviesByCategory(categoryId);
 
 }
 function moviePreview() {
@@ -185,6 +188,9 @@ function searchPage() {
 
     const [_, query] = location.hash.split('=');
     getMoviesBySearch(query);
+
+    infiniteScroll = getPaginatedMoviesBySearch(query);
+
 
 
 }
