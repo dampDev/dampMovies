@@ -122,11 +122,12 @@ h1 {
   width: 100%;
   height: 280px;
 }
-.trendingPreview-container{
+.trendingPreview-container, .liked-movieList{
     width: 100%;
     padding-left: 10px;
 }
-.subTitle-container{
+.subTitle-container, .liked-title{
+    margin-top: 5px;
     display: flex;
     justify-content:space-between;
     padding-left: 15px;
@@ -138,7 +139,7 @@ h2{
 }
 
 
-.trendingPreview-movieList{
+.trendingPreview-movieList, .liked-movieList{
     margin-top: 5px;
     display: flex;
     overflow-x: scroll;
@@ -152,6 +153,7 @@ h2{
   cursor: pointer;
   display: flex;
  text-align: center;
+ position: relative;
 }
 .movie-container--loading {
   background: gray;
@@ -172,7 +174,8 @@ h2{
   animation-delay: .4s;
 }
 
-.trendingPreview-movieList .movie-container{
+.trendingPreview-movieList .movie-container,
+  .liked-movieList .movie-container{
     position: relative;
     scroll-snap-align: end ;
     display: flex;
@@ -187,6 +190,26 @@ h2{
     height: 255px;
     border-radius: 20px;
     
+}
+
+.movieBtn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  border: none;
+  background-color: #8000805e;
+}
+
+.fa-heart{
+  font-size: 1.3rem;
+  color: #e3cccc;
+}
+
+.movie-container .fa-solid{
+  color: red;
 }
 
 .trendingPreview-movieList p{
