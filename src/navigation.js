@@ -1,7 +1,7 @@
 import {
     getTrandingMoviesPreview, getCategoriesPreview, getMoviesByCategory, getMoviesBySearch,
     getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview,getPaginatedTrandingMovies,
-    getPaginatedMoviesBySearch,getPaginatedMoviesByCategory
+    getPaginatedMoviesBySearch,getPaginatedMoviesByCategory,getLikedMovies
 } from './main.js';
 
 export let pageNav = 1;
@@ -98,7 +98,7 @@ function homePage() {
 
     headerCategoryTitle.classList.add('inactive');
     searchForm.classList.add('inactive');
-
+    likedSection.classList.remove('inactive');
     trendingPreviewSection.classList.remove('inactive');
     categoriesPreviewSection.classList.remove('inactive');
     categoriesPreviewList.classList.add('categoriesPreview-list');
@@ -111,6 +111,7 @@ function homePage() {
 
     getCategoriesPreview();
     getTrandingMoviesPreview();
+    getLikedMovies();
 }
 
 function categoriesPage() {
@@ -124,6 +125,7 @@ function categoriesPage() {
     headerCategoryTitle.classList.remove('inactive');
     searchForm.classList.add('inactive');
 
+    likedSection.classList.add('inactive');
     mainContainerMovies.classList.add('main-container')
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.remove('inactive');
@@ -143,6 +145,8 @@ function categoriesPage() {
 function moviePreview() {
     mainPreviewDetailContainer.classList.remove('inactive')
     moviePreviewDetailcontainer.classList.remove('inactive')
+    likedSection.classList.add('inactive');
+
     const [_, movieId] = location.hash.split('=');
     getMoviePreview(movieId);
 
@@ -156,6 +160,8 @@ function movieDetailPage() {
     menuContainer.classList.add('inactive');
     headerTitle.classList.add('inactive');
     comingSection.classList.add('inactive');
+    likedSection.classList.add('inactive');
+
     headerCategoryTitle.classList.add('inactive');
     searchForm.classList.add('inactive');
 
@@ -180,6 +186,7 @@ function searchPage() {
     comingSection.classList.add('inactive');
     headerCategoryTitle.classList.add('inactive');
     searchForm.classList.remove('inactive');
+    likedSection.classList.add('inactive');
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
@@ -203,6 +210,7 @@ function trendsPage() {
     comingSection.classList.add('inactive');
     headerCategoryTitle.classList.remove('inactive');
     searchForm.classList.add('inactive');
+    likedSection.classList.add('inactive');
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
@@ -234,6 +242,8 @@ function discoverPage() {
     arrowBtn.classList.remove('inactive');
     headerTitle.classList.add('inactive');
     comingSection.classList.add('inactive');
+    likedSection.classList.add('inactive');
+
     headerCategoryTitle.classList.remove('inactive');
     searchForm.classList.remove('inactive');
     categoriesPreviewList.classList.add('categoriesPreview-list');

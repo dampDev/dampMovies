@@ -5,6 +5,7 @@ import {
 
 let maxPages;
 
+// Data 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -15,6 +16,35 @@ const api = axios.create({
         // 'language': 'es-MX'
     }
 });
+
+function likedMovieList(){
+
+    const item = JSON.parse(localStorage.getItem('liked_movies'));
+    let movies;
+    
+    if (item){
+        movies = item;
+    } else{
+        movies = {};
+    }
+
+    return movies;
+}
+
+function likeMovie(movie){
+    // movie.id
+    const likedMovies =   likedMovieList();
+    console.log(likedMovies);
+
+    if(likedMovies[movie.id]){
+       likedMovies[movie.id] = undefined;
+    }else{
+       likedMovies[movie.id] = movie;
+
+    }
+
+    localStorage.setItem('liked_movies',JSON.stringify(likedMovies)); 
+} 
 
 // Utils
 const lazyLoader = new IntersectionObserver((entries) => {
@@ -71,9 +101,12 @@ function createMovies(movies, container,
         const likebtn = document.createElement('i');
         likebtn.classList.add('fa-regular');
         likebtn.classList.add('fa-heart');
+
+        likedMovieList()[movie.id] && likebtn.classList.add('fa-solid')
+
         moviebtn.addEventListener('click', ()=>{
             likebtn.classList.toggle('fa-solid');
-            // likebtn.classList.toggle('fa-heart');
+            likeMovie(movie);
         })
 
 
@@ -544,6 +577,15 @@ async function getCast(id) {
 
 }
 
+function getLikedMovies(){
+    const likedMovies = likedMovieList();
+    console.log('favoritos',likedMovies);
+    // {keys:'values', keys:'values'}
+    const moviesArray = Object.values(likedMovies);
+    createMovies(moviesArray,likedMoviesListContainer,{lazyLoad: true, clean:true});
+    console.log(likedMovies);
+}
+
 // getCategoriesPreview();
 // getTrandingMoviesPreview();
 getPopularMovies();
@@ -551,7 +593,7 @@ getPopularMovies();
 export {
     getTrandingMoviesPreview, getCategoriesPreview, getMoviesByCategory, getMoviesBySearch,
     getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview, 
-    getPaginatedMoviesBySearch,getPaginatedTrandingMovies,getPaginatedMoviesByCategory
+    getPaginatedMoviesBySearch,getPaginatedTrandingMovies,getPaginatedMoviesByCategory,getLikedMovies
 
 };
 
