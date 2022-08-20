@@ -16,8 +16,7 @@ html{
     font-family: 'Josefin Sans', sans-serif;
 }
 body{
-background-color: rgba(26, 38, 60, 0.76);
-    /* background-color: rgba(21, 20, 31, 1); */
+background-color: black;
     min-width: 320px;
   
 
@@ -422,8 +421,12 @@ h2{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 1.7rem;
+    
    
+  }
+
+  .nav-list p{
+    font-family: 'Josefin Sans', sans-serif;
   }
 
   .nav-list i:hover {

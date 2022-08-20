@@ -1,7 +1,7 @@
 
 // Sections
 const headerSection = document.querySelector('#header');
-const comingSection = document.querySelector('#coming');
+const popularSection = document.querySelector('#popular');
 const trendingPreviewSection = document.querySelector('#trendingPreview');
 const categoriesPreviewSection = document.querySelector('#categoriesPreview');
 const genericSection = document.querySelector('#genericList');
@@ -14,6 +14,8 @@ const searchForm = document.querySelector('#searchForm');
 const trendingMoviesPreviewList = document.querySelector('.trendingPreview-movieList');
 const categoriesPreviewList = document.querySelector('.categoriesPreview-list');
 const movieDetailCategoriesList = document.querySelector('#movieDetail .categories-list');
+const moviePopularCategoriesList = document.querySelector('#popular .categories-list');
+
 const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
 const mainContainerMovies = document.querySelector('.main-container')
 const moviePreviewDetailcontainer= document.querySelector('.moviePreviewDetail-container');
@@ -37,6 +39,8 @@ const discoverBtn = document.querySelector('#dicover-button');
 const trendingBtn = document.querySelector('.trendingPreview-btn');
 
 const movieDetailTitle = document.querySelector('.movieDetail-title');
+const moviePoularTitle = document.querySelector('.movieDetail-title');
+
 const movieDetailDescription = document.querySelector('.movieDetail-description');
 const movieDetailScore = document.querySelector('.movieDetail-score');
 

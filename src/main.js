@@ -228,22 +228,22 @@ async function getPopularMovies() {
     const { data } = await api('movie/popular');
 
     const movies = data.results;
-    console.log({ data, movies });
+    console.log("populares",{ data, movies });
 
     const primero = movies[0];
-    console.log(primero);
+    console.log("primero",primero.title);
 
     //    createMovies(movies,trendingMoviesPreviewList);  
 
 
-    const comingPreviewMoviesContainer = document.querySelector('#coming .comming-container')
+    const popularPreviewMoviesContainer = document.querySelector('#popular .comming-container')
 
-    const comingContainer = document.createElement('div');
-    comingContainer.classList.add('comming-img-container');
-    // comingContainer.addEventListener('click', () => {
+    const popularContainer = document.createElement('div');
+    popularContainer.classList.add('comming-img-container');
+    popularContainer.addEventListener('click', () => {
 
-    //     location.hash = 'movie=' + movie.id;
-    // });
+     location.hash = 'movie=' + primero.id;
+ });
 
 
 
@@ -258,18 +258,24 @@ async function getPopularMovies() {
     movieImg.style.background = `
         
     linear-gradient(
-        180deg,
-        rgba(0,0,0,0.35)19.27%,
-        rgba(0,0,0,0)29.17%
+        360deg,
+        rgba(0,0,0,0.97)12.27%,
+        rgba(0,0,0,0)49.17%
     ),
     url(${movieImgUrl})`;
     movieImg.style.backgroundPosition = "center";
     movieImg.style.backgroundRepeat = "no-repet"
     movieImg.style.backgroundSize = "cover";
-
-
-    comingContainer.appendChild(movieImg);
-    comingPreviewMoviesContainer.appendChild(comingContainer);
+    
+   
+    moviePoularTitle.textContent = primero.title;
+    // movieDetailDescription.textContent = primero.overview;
+    // movieDetailScore.textContent = primero.vote_average;
+        console.log("generos de pelcula popular",primero.genre_ids);
+    createCategories(primero.genre_ids, moviePopularCategoriesList); 
+    
+    popularContainer.appendChild(movieImg);
+    popularPreviewMoviesContainer.appendChild(popularContainer);
 }
 
 async function getCategoriesPreview() {
