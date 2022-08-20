@@ -215,6 +215,8 @@ async function getTrandingMoviesPreview() {
     const movies = data.results;
     console.log({ data, movies });
 
+    
+
     const primero = movies[0];
     console.log(primero);
 
@@ -277,7 +279,17 @@ async function getPopularMovies() {
     const movies = data.results;
     console.log("populares",{ data, movies });
 
-    const primero = movies[2];
+    var min = 0;
+    var max = 19;
+
+    var x = Math.floor(Math.random()*(max-min+1)+min);
+
+console.log("aleatorio",x);
+//2509
+
+
+
+    const primero = movies[x];
     console.log("primero",primero.title);
 
     getPopularMovieDetail(primero.id);  
