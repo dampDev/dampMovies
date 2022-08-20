@@ -38,7 +38,7 @@ const discoverBtn = document.querySelector('#dicover-button');
 
 const trendingBtn = document.querySelector('.trendingPreview-btn');
 
-const movieDetailTitle = document.querySelector('.movieDetail-title');
+const movieDetailTitle = document.querySelector('#movieDetail .movieDetail-title');
 const moviePoularTitle = document.querySelector('.movieDetail-title');
 
 const movieDetailDescription = document.querySelector('.movieDetail-description');

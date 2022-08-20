@@ -1,7 +1,7 @@
 import {
     getTrandingMoviesPreview, getCategoriesPreview, getMoviesByCategory, getMoviesBySearch,
     getTrandingMovies, getMovieById, getMovieSimilar, getDiscoverMovies, getMoviePreview,getPaginatedTrandingMovies,
-    getPaginatedMoviesBySearch,getPaginatedMoviesByCategory,getLikedMovies
+    getPaginatedMoviesBySearch,getPaginatedMoviesByCategory,getLikedMovies,getPopularMovies
 } from './main.js';
 
 export let pageNav = 1;
@@ -109,9 +109,11 @@ function homePage() {
     movieDetailSection.classList.add('inactive');
 
 
-    getCategoriesPreview();
+    // getCategoriesPreview();
     getTrandingMoviesPreview();
     getLikedMovies();
+    getPopularMovies();
+
 }
 
 function categoriesPage() {
@@ -183,7 +185,7 @@ function searchPage() {
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
     headerTitle.classList.add('inactive');
-    comingSection.classList.add('inactive');
+    popularSection.classList.add('inactive');
     headerCategoryTitle.classList.add('inactive');
     searchForm.classList.remove('inactive');
     likedSection.classList.add('inactive');
@@ -207,7 +209,7 @@ function trendsPage() {
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
     headerTitle.classList.add('inactive');
-    comingSection.classList.add('inactive');
+    popularSection.classList.add('inactive');
     headerCategoryTitle.classList.remove('inactive');
     searchForm.classList.add('inactive');
     likedSection.classList.add('inactive');
@@ -225,8 +227,7 @@ function trendsPage() {
 
     
     
-    infiniteScroll = getPaginatedTrandingMovies;
-   
+    infiniteScroll = getPaginatedTrandingMovies;  
     
                         
 
@@ -241,7 +242,7 @@ function discoverPage() {
     headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
     headerTitle.classList.add('inactive');
-    comingSection.classList.add('inactive');
+    popularSection.classList.add('inactive');
     likedSection.classList.add('inactive');
 
     headerCategoryTitle.classList.remove('inactive');
