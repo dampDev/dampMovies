@@ -442,46 +442,37 @@ h2{
   .main-PreviewDetail {
     position: fixed;
     z-index: 200;
-    height: 100vh;
-    padding-top: 40vh;
     bottom: 8vh;
     width: 100%;
     display: flex;
     justify-content: space-between;     
-    background: #151416de;
+    background: black;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     transition-property: widtht;
     transition-duration: 2s;
     transition-delay: 5s;
+    padding-top: 10px;
   }
 
   .main-PreviewDetail span{
-    order: 2;
+   position: relative;
+   order: 1;
+  }
+
+  .main-PreviewDetail span i {
     position: absolute;
-    right: 10px;
-    top: 41vh;
-  }
-
-  /* .moviePreviewDetail-container{
     
-    top: 251px;
-   
-
-
-  } */
-  .moviePreviewDetail-container{
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    padding-top: 17px;
-    height: 200px;
-    overflow: hidden;
-    background: #148387b3;
-
+    right: 2vh;
+    font-size: 1.4rem;
   }
 
-  .moviePreviewDetail-container .movie-container{
+  
+ 
+
+  .main-PreviewDetail .movie-container{
+    padding-right: 10px;
+    padding-left: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -489,7 +480,7 @@ h2{
     margin-right: 10px;
   }
 
-  .moviePreviewDetail-container .movie-img{
+  .main-PreviewDetail .movie-img{
     background: #C4C4C4;
     width: 100px;
     height: 170px;

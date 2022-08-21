@@ -84,7 +84,8 @@ function createMovies(movies, container,
             'https://image.tmdb.org/t/p/w300' + movie.poster_path,
         );
         movieImg.addEventListener('click', () => {
-            location.hash = 'movie=' + movie.id;
+            getMoviePreview(movie.id);
+            
         });
         movieImg.addEventListener('error', () => {
             //     movieImg.style.paddingTop = "50%";
@@ -503,12 +504,28 @@ async function getDiscoverMovies() {
 
 async function getMoviePreview(id) {
     const { data: movie } = await api('movie/' + id);
-    moviePreviewDetailcontainer.innerHTML = "";
+    
+    console.log("detalle de pelicula",movie)
+    const moviePreviewDetailSection= document.querySelector('.main-PreviewDetail');
+    mainPreviewDetailContainer.classList.remove('inactive');
+    
+    moviePreviewDetailSection.innerHTML="";
+    
+    const spanMovie= document.createElement('span');
+    const imovie = document.createElement('i');
+    imovie.classList.add('fa-solid');
+    imovie.classList.add('fa-circle-xmark');
+    imovie.addEventListener('click',()=>{
+        mainPreviewDetailContainer.classList.add('inactive');
+    })
+
+    
 
     const movieContainer = document.createElement('div');
     movieContainer.classList.add('movie-container');
     movieContainer.addEventListener('click', () => {
-        location.hash = 'moviePreview=' + movie.id;
+        location.hash = 'movie=' + movie.id;
+        mainPreviewDetailContainer.classList.add('inactive');
     });
 
 
@@ -539,10 +556,11 @@ async function getMoviePreview(id) {
     const movieOverviewPreview = document.createElement('p');
     const pMovieOverview = document.createTextNode(movie.overview);
 
-
-    moviePreviewDetailcontainer.appendChild(movieContainer);
+    moviePreviewDetailSection.appendChild(spanMovie);
+    spanMovie.appendChild(imovie);
+    moviePreviewDetailSection.appendChild(movieContainer);
     movieContainer.appendChild(movieImg);
-    moviePreviewDetailcontainer.appendChild(moviePreviewDiv);
+    moviePreviewDetailSection.appendChild(moviePreviewDiv);
     moviePreviewDiv.appendChild(movieTitlePreview);
     movieTitlePreview.appendChild(h2MovieTitlePreview);
     moviePreviewDiv.appendChild(releaseDate);
